@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+	// your code goes here
+	int t; cin >> t;
+	while(t--)
+	{
+	    ll n,p,k;
+	    cin >> n >> p >> k;
+	    ll res = 0;
+	    ll reqMod = p%k;
+	    reqMod--;
+	    ll seg = ((n-1)/k)*k;
+	    seg = n-seg-1;
+	    if(reqMod > seg)
+	    res += (seg+1)((n-1)/k + 1) + (reqMod-seg)((n-1)/k);
+	    else
+	    res += ((n-1)/k + 1) * (reqMod+1);
+	    for(int i = reqMod+1 ; i <= n-1 ; i+=k)
+	    {
+	        res++;
+	        if(i==p)
+	        {
+	            cout << res << endl;
+	            break;
+	        }
+	    }
+	}
+	return 0;
+}
